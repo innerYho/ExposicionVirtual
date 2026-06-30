@@ -3,6 +3,8 @@
 Fuente de verdad para recuperar el escenario si el builder falla o se pierden datos.  
 Todas las posiciones de prefabs son **locales al stand**. Las de paneles son **locales a su padre**.
 
+> Ver también: `README.md` en la raíz del proyecto para instrucciones de clonación e instalación de paquetes.
+
 ---
 
 ## Stands — posición y rotación mundo
@@ -212,9 +214,53 @@ El bloque anterior debe estar presente en **ambos** PrefabInstances. El jugador 
 
 ---
 
+## Scripts del jugador
+
+### `Assets/Scripts/PlayerMovement.cs`
+
+| Variable | Tipo | Valor | Descripción |
+|---|---|---|---|
+| `velocidad` | `float` | `5` | Metros/segundo de desplazamiento |
+| `velocidadRotacion` | `float` | `720` | Grados/segundo al girar |
+
+Lectura de input: `Keyboard.current` (new Input System). Teclas: WASD + flechas.  
+Parámetros Animator que alimenta: `Speed` y `Direction`.  
+Serializado en escena: `SampleScene.unity` líneas 5152–5154.
+
+### `Assets/Scripts/CameraFollow.cs`
+
+| Variable | Tipo | Valor | Descripción |
+|---|---|---|---|
+| `objetivo` | `Transform` | jugador | Transform que sigue la cámara |
+| `distancia` | `float` | `6` | Distancia orbital al jugador |
+| `altura` | `float` | `2.5` | Altura sobre el jugador |
+| `suavizado` | `float` | `8` | Velocidad de interpolación (Lerp) |
+| `sensibilidad` | `float` | `0.15` | Velocidad de rotación con mouse |
+| `pitchMin` | `float` | `5` | Ángulo vertical mínimo (grados) |
+| `pitchMax` | `float` | `55` | Ángulo vertical máximo (grados) |
+
+Usa `Mouse.current` (new Input System). `Escape` libera el cursor; clic izquierdo lo bloquea de nuevo.
+
+---
+
+## Repositorio Git
+
+| Elemento | Estado |
+|---|---|
+| `Assets/unity-chan!/` | **Excluido** del repo — reimportar desde Asset Store |
+| `Assets/Mnostva Art/` | **Excluido** del repo — reimportar desde Asset Store |
+| `Library/`, `Temp/`, `Obj/`, `Logs/` | Excluidos (generados por Unity) |
+| `Assets/Exposicion/`, `Assets/Scripts/`, `Assets/img/`, `Assets/Scenes/` | Incluidos |
+| `ProjectSettings/`, `Packages/`, `docs/`, `README.md` | Incluidos |
+
+**Si se clona el repo en una máquina nueva**, antes de abrir la escena hay que importar los dos paquetes desde Unity Asset Store. Ver instrucciones completas en `README.md`.
+
+---
+
 ## Reglas de mantenimiento
 
 1. **Cambiar un prefab = recalibrar sus paneles** — las coords de panel son locales al prefab raíz.
 2. Antes de "Construir Escenario Completo", verificar que el builder tenga el prefab correcto en cada stand.
 3. Cada vez que se calibre un panel en el editor, actualizar este archivo y `COORDENADAS.md`.
 4. Los GUIDs de textura no cambian si no se mueve el archivo. Si se mueve, actualizar el `.mat` correspondiente.
+5. Los overrides de UnityChan en la escena se pierden si el builder recrea `Sala_Exposicion` — restaurarlos manualmente (ver sección Personaje).
