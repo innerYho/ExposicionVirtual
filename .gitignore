@@ -1,0 +1,72 @@
+# Carpetas generadas por Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# Builds
+[Bb]uild/
+[Bb]uilds/
+[Uu]ser[Ss]ettings/
+
+# Archivos de caché de assets
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity3D generados
+*.unityproj
+*.booproj
+sysinfo.txt
+*.stackdump
+*.unitypackage
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# JetBrains Rider
+.idea/
+
+# Archivos de crash
+crash.log
+crash.dmp
+
+# Paquetes de terceros importados desde Unity Asset Store
+# Deben reimportarse manualmente — ver README.md
+Assets/unity-chan!/
+Assets/unity-chan!.meta
+Assets/Mnostva Art/
+Assets/Mnostva Art.meta
+
+# Archivos fuente de diseño (no necesarios en runtime)
+*.psd
+*.psd.meta
+*.ai
+*.ai.meta
